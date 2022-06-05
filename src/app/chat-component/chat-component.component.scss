@@ -1,0 +1,47 @@
+.chatArea {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+
+  ul.messages {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    list-style: none;
+    word-wrap: break-word;
+    flex-grow: 1;
+    padding: 1rem;
+    li {
+      margin: 1rem;
+      width: 100%;
+    }
+    li.log {
+      color: gray;
+      margin: 5px;
+      font-size: 1.3rem;
+      text-align: center;
+    }
+    li.message {
+      font-size: 1.5rem;
+      .username {
+        font-weight: 700;
+        overflow: hidden;
+        padding-right: 15px;
+        text-align: right;
+        color: rgb(88, 220, 0);
+      }
+      .messageBody {
+      }
+    }
+  }
+  input.inputMessage {
+    border: 10px solid #000;
+    width: 100vw;
+    font-size: 1.5rem;
+    padding: 1rem;
+    outline: none;
+  }
+}
