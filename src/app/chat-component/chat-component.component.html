@@ -1,6 +1,10 @@
 <div class="chatArea">
+  <div class="topBar">
+    <button (click)="logout()">logout</button>
+  </div>
+
   <ul class="messages">
-    <li class="log">Welcome to Socket Chat</li>
+    <li class="log">Welcome to Socket Chat {{ getUsername() }}</li>
     <li class="message">
       <span class="username">ChatBot</span>
       <span class="messageBody">Hello my friend yoyo mc mdfka</span>

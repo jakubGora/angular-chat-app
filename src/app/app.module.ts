@@ -5,11 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StartComponentComponent } from './start-component/start-component.component';
 import { ChatComponentComponent } from './chat-component/chat-component.component';
+import { ChatService } from './services/chat.service';
 
 @NgModule({
   declarations: [AppComponent, StartComponentComponent, ChatComponentComponent],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
-  providers: [],
+  providers: [ChatService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
