@@ -1,6 +1,13 @@
 <div class="chatArea">
   <div class="topBar">
-    <button (click)="logout()">logout</button>
+    <h1>Chat-app</h1>
+    <div class="info">
+      <p>User: {{ getUsername() }}</p>
+      <p>There are X participants</p>
+    </div>
+    <button (click)="logout()">
+      <fa-icon [icon]="faArrowRightFromBracket"></fa-icon>
+    </button>
   </div>
 
   <ul class="messages">
@@ -12,13 +19,29 @@
     <li class="log">Welcome to Socket Chat</li>
     <li class="message">
       <span class="username">ChatBot</span>
-      <span class="messageBody">Hello my friend yoyo mc mdfka</span>
+      <span class="messageBody">Lorem ipsum, dolor sit amet consectetur </span>
     </li>
-    <li class="log">Welcome to Socket Chat</li>
-    <li class="message">
-      <span class="username">ChatBot</span>
-      <span class="messageBody">Hello my friend yoyo mc mdfka</span>
+    <li class="log">lorem15</li>
+    <li class="message right">
+      <span class="username right">User</span>
+      <span class="messageBody right"
+        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Et perferendis
+        magnam non veritatis. Cum laborum, voluptatibus quas minus minima
+        reiciendis aliquam eos architecto. Mollitia debitis aliquam officia
+        impedit tempore cum, tempora incidunt odio quidem consequatur enim
+        voluptatum iste, culpa ratione vitae quos non nobis, autem cumque.
+        Dolorum magnam mollitia sit!
+      </span>
     </li>
   </ul>
-  <input class="inputMessage" placeholder="Type here..." />
+  <form [formGroup]="inputMsgForm" (ngSubmit)="onSubmit()">
+    <input
+      class="inputMessage"
+      placeholder="Type here..."
+      formControlName="inputMessage"
+    />
+    <button>
+      <fa-icon [icon]="faPaperPlane"></fa-icon>
+    </button>
+  </form>
 </div>

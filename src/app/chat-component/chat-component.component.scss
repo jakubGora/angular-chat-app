@@ -1,3 +1,7 @@
+$color1: #0084ff;
+$color2: #0067c7;
+$color3: #1b364e;
+
 .chatArea {
   width: 100vw;
   height: 100vh;
@@ -5,6 +9,38 @@
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+
+  .topBar {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    font-size: 1.5rem;
+    color: white;
+    background-color: #0084ff;
+    padding: 1rem;
+    .info {
+      flex-grow: 1;
+      padding-left: 1rem;
+      margin-left: 1rem;
+      border-left: 2px solid white;
+    }
+    button {
+      width: 4rem;
+      height: 4rem;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      color: white;
+      font-size: 1.4rem;
+      background-color: rgb(60, 177, 255);
+    }
+    button:hover {
+      filter: brightness(120%);
+    }
+  }
 
   ul.messages {
     display: flex;
@@ -16,32 +52,119 @@
     padding: 1rem;
     li {
       margin: 1rem;
-      width: 100%;
     }
     li.log {
       color: gray;
       margin: 5px;
       font-size: 1.3rem;
       text-align: center;
+      width: 100%;
+    }
+    li.message.right {
+      align-self: flex-end;
     }
     li.message {
       font-size: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      color: white;
+      width: 50%;
+      min-width: 360px;
       .username {
         font-weight: 700;
         overflow: hidden;
         padding-right: 15px;
-        text-align: right;
         color: rgb(88, 220, 0);
       }
+      .username.right {
+        text-align: right;
+        padding: 0;
+      }
       .messageBody {
+        width: fit-content;
+        position: relative;
+        background-color: $color1;
+        padding: 1rem;
+        margin-top: 1.5rem;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        border-top-right-radius: 1rem;
+      }
+      .messageBody::before {
+        content: "";
+        width: 1.5rem;
+        height: 1.5rem;
+        position: absolute;
+        top: -1.5rem;
+        left: 0;
+        background-color: $color1;
+      }
+      .messageBody::after {
+        content: "";
+        width: 50vw;
+        height: 1.5rem;
+        position: absolute;
+        top: -1.5rem;
+        left: 0;
+        background-color: white;
+        border-bottom-left-radius: 1.5rem;
+      }
+      .messageBody.right {
+        border-top-right-radius: 0;
+        border-top-left-radius: 1rem;
+        color: #0067c7;
+        background-color: white;
+        border: 4px solid $color1;
+      }
+      .messageBody.right::after {
+        top: -1.8rem;
+        left: auto;
+        right: -0.2rem;
+        background-color: white;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 1.5rem;
+      }
+      .messageBody.right::before {
+        top: -1.8rem;
+        left: auto;
+        right: -0.2rem;
       }
     }
   }
-  input.inputMessage {
-    border: 10px solid #000;
-    width: 100vw;
-    font-size: 1.5rem;
-    padding: 1rem;
-    outline: none;
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    background-color: $color3;
+    width: 99vw;
+    margin: 0.5vw;
+
+    padding: 0.5rem;
+    color: white;
+    .inputMessage {
+      flex-grow: 1;
+      border: none;
+      font-size: 1.5rem;
+      background-color: $color3;
+    }
+    input {
+      padding: 1rem;
+      outline: none;
+      color: white;
+    }
+    button {
+      cursor: pointer;
+      border: none;
+      width: 3.4rem;
+      height: 3.4rem;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.4rem;
+      background-color: $color1;
+    }
+    button:hover {
+      filter: brightness(120%);
+    }
   }
 }
