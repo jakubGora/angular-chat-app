@@ -12,26 +12,33 @@
 
   <ul class="messages">
     <li class="log">Welcome to Socket Chat {{ getUsername() }}</li>
-    <li class="message">
-      <span class="username">ChatBot</span>
-      <span class="messageBody">Hello my friend yoyo mc mdfka</span>
-    </li>
-    <li class="log">Welcome to Socket Chat</li>
-    <li class="message">
-      <span class="username">ChatBot</span>
-      <span class="messageBody">Lorem ipsum, dolor sit amet consectetur </span>
-    </li>
-    <li class="log">lorem15</li>
-    <li class="message right">
-      <span class="username right">User</span>
-      <span class="messageBody right"
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Et perferendis
-        magnam non veritatis. Cum laborum, voluptatibus quas minus minima
-        reiciendis aliquam eos architecto. Mollitia debitis aliquam officia
-        impedit tempore cum, tempora incidunt odio quidem consequatur enim
-        voluptatum iste, culpa ratione vitae quos non nobis, autem cumque.
-        Dolorum magnam mollitia sit!
-      </span>
+
+    <ng-container *ngFor="let mess of messageArray">
+      <ng-container *ngIf="mess.type === 'msg'; else logTmp">
+        <ng-container *ngIf="mess.username == getUsername(); else elseTemplate">
+          <li class="message right">
+            <span class="username right">{{ mess.username }}</span>
+            <span class="messageBody right">{{ mess.message }}</span>
+          </li>
+        </ng-container>
+        <ng-template #elseTemplate
+          ><li class="message">
+            <span class="username">{{ mess.username }}</span>
+            <span class="messageBody">{{ mess.message }}</span>
+          </li>
+        </ng-template>
+      </ng-container>
+      <ng-template #logTmp
+        ><li class="log">
+          <span class="username">{{ mess.username }}</span>
+          <span class="messageBody">{{ mess.message }}</span>
+        </li>
+      </ng-template>
+    </ng-container>
+
+    <li *ngIf="typingUser" class="message typing">
+      <span class="username">{{ typingUser }}</span>
+      <span class="messageBody">...</span>
     </li>
   </ul>
   <form [formGroup]="inputMsgForm" (ngSubmit)="onSubmit()">

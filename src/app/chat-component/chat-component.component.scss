@@ -50,6 +50,8 @@ $color3: #1b364e;
     word-wrap: break-word;
     flex-grow: 1;
     padding: 1rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
     li {
       margin: 1rem;
     }
@@ -60,7 +62,11 @@ $color3: #1b364e;
       text-align: center;
       width: 100%;
     }
+    li.typing {
+      filter: blur(60%);
+    }
     li.message.right {
+      align-items: flex-end;
       align-self: flex-end;
     }
     li.message {
@@ -117,7 +123,7 @@ $color3: #1b364e;
         border: 4px solid $color1;
       }
       .messageBody.right::after {
-        top: -1.8rem;
+        top: -1.7rem;
         left: auto;
         right: -0.2rem;
         background-color: white;
@@ -125,7 +131,7 @@ $color3: #1b364e;
         border-bottom-right-radius: 1.5rem;
       }
       .messageBody.right::before {
-        top: -1.8rem;
+        top: -1.7rem;
         left: auto;
         right: -0.2rem;
       }
