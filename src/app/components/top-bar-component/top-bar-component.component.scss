@@ -32,3 +32,22 @@ $color3: #1b364e;
     filter: brightness(120%);
   }
 }
+@media screen and (max-width: 610px) {
+  .topBar {
+    font-size: 1.1rem;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+}
+@media screen and (max-width: 430px) {
+  .topBar {
+    h1 {
+      flex-grow: 1;
+    }
+    .info {
+      display: none;
+    }
+  }
+}

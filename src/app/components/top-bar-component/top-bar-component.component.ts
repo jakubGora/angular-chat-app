@@ -30,8 +30,8 @@ export class TopBarComponentComponent implements OnInit {
     );
   }
 
-  addParticipantsMessage = (data: Message) => {
-    let message = '';
+  addParticipantsMessage = (data: Message): void => {
+    let message: string = '';
     if (data.numUsers === 1) {
       message += "There's 1 participant";
     } else {
@@ -40,14 +40,14 @@ export class TopBarComponentComponent implements OnInit {
     this.participantsMessage = message;
   };
 
-  getMessage(messageType: string, fun: (data: Message) => void) {
+  getMessage(messageType: string, fun: (data: Message) => void): void {
     this.chatService.getMessage(messageType).subscribe((data) => fun(data));
   }
 
-  getUsername() {
+  getUsername(): string {
     return this.chatService.getUsername();
   }
-  logout() {
+  logout(): void {
     this.chatService.logout();
   }
 }

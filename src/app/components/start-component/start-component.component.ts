@@ -15,20 +15,21 @@ export class StartComponentComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
-  @ViewChild('nameInput') nameInputElement!: ElementRef<HTMLInputElement>;
+  @ViewChild('nameInput')
+  nameInputElement: ElementRef<HTMLInputElement> | undefined;
 
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    this.nameInputElement.nativeElement.focus();
+    this.nameInputElement?.nativeElement.focus();
   }
 
   checkoutForm = this.formBuilder.group({
     name: '',
   });
 
-  onBlur() {
-    this.nameInputElement.nativeElement.focus();
+  onBlur(): void {
+    this.nameInputElement?.nativeElement.focus();
   }
 
   onSubmit(): void {

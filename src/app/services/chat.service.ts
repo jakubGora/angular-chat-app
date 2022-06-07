@@ -9,8 +9,8 @@ import { map } from 'rxjs/operators';
 })
 export class ChatService implements OnInit {
   private username: string = '';
-  messageArray: Message[] = [];
-  //'wss://socketio-chat-h9jt.herokuapp.com'
+  private messageArray: Message[] = [];
+
   constructor(public socket: Socket, private router: Router) {
     this.initialChat();
   }
@@ -39,6 +39,14 @@ export class ChatService implements OnInit {
 
   getUsername(): string {
     return this.username;
+  }
+
+  getMessageArray(): Message[] {
+    return this.messageArray;
+  }
+
+  addToMessageArray(msg: Message) {
+    this.messageArray.push(msg);
   }
 
   logout(): void {

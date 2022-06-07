@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import {
   faPaperPlane,
@@ -12,12 +12,13 @@ import { ChatService } from 'src/app/services/chat.service';
 })
 export class ChatFormComponentComponent implements OnInit {
   inputMsgForm = this.formBuilder.group({
-    inputMessage: '',
+    inputMessage: '' as string,
   });
   faPaperPlane: IconDefinition = faPaperPlane;
 
   @Input()
-  scrollDownChatList: void | undefined;
+  chatListElement!: ElementRef<HTMLUListElement>;
+
   constructor(
     private formBuilder: FormBuilder,
     private chatService: ChatService
@@ -25,9 +26,9 @@ export class ChatFormComponentComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.inputMsgForm.value.inputMessage) {
-      this.chatService.messageArray.push({
+      this.chatService.addToMessageArray({
         username: this.chatService.getUsername(),
         message: this.inputMsgForm.value.inputMessage!,
         type: 'msg',
@@ -37,6 +38,16 @@ export class ChatFormComponentComponent implements OnInit {
         this.inputMsgForm.value.inputMessage!
       );
       this.inputMsgForm.reset();
+      this.scrollDownChatList();
     }
+  }
+
+  scrollDownChatList(): void {
+    setTimeout(() => {
+      this.chatListElement.nativeElement.scroll({
+        top: this.chatListElement.nativeElement.scrollHeight,
+        behavior: 'smooth',
+      });
+    }, 1000);
   }
 }

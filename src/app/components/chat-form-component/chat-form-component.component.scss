@@ -10,9 +10,9 @@ form {
   background-color: $color3;
   width: 99vw;
   margin: 0.5vw;
-
   padding: 0.5rem;
   color: white;
+
   .inputMessage {
     flex-grow: 1;
     border: none;
@@ -36,5 +36,13 @@ form {
   }
   button:hover {
     filter: brightness(120%);
+  }
+}
+
+@media screen and (max-width: 610px) {
+  form {
+    .inputMessage {
+      font-size: 1rem;
+    }
   }
 }

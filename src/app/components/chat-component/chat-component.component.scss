@@ -10,6 +10,23 @@ $color3: #1b364e;
   justify-content: center;
   flex-direction: column;
 
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $color1;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: $color2;
+  }
+
   ul.messages {
     display: flex;
     flex-direction: column;
@@ -20,6 +37,7 @@ $color3: #1b364e;
     padding: 1rem;
     overflow-y: scroll;
     overflow-x: hidden;
+
     li {
       margin: 1rem;
     }
@@ -102,6 +120,25 @@ $color3: #1b364e;
         top: -1.7rem;
         left: auto;
         right: -0.2rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: 610px) {
+  .chatArea {
+    ul.messages {
+      li.log {
+        font-size: 1.1rem;
+        margin: 3px;
+      }
+
+      li.message {
+        font-size: 1.3rem;
+        width: 90%;
+        min-width: 100px;
+        .messageBody {
+          margin-top: 1.3rem;
+        }
       }
     }
   }

@@ -23,13 +23,9 @@ export class ChatComponentComponent implements OnInit {
     this.chatService.sendMessage('add user', this.getUsername());
   }
 
-  ngOnInit() {
-    this.getMessage('connect', () =>
-      this.chatService.sendMessage('add user', this.getUsername())
-    );
-
+  ngOnInit(): void {
     this.getMessage('new message', (data: Message) => {
-      this.chatService.messageArray.push({
+      this.chatService.addToMessageArray({
         username: data.username,
         message: data.message,
         type: 'msg',
@@ -38,7 +34,7 @@ export class ChatComponentComponent implements OnInit {
     });
 
     this.getMessage('user joined', (data: Message) => {
-      this.chatService.messageArray.push({
+      this.chatService.addToMessageArray({
         username: data.username,
         message: ' joined',
         type: 'log',
@@ -46,33 +42,33 @@ export class ChatComponentComponent implements OnInit {
     });
 
     this.getMessage('user left', (data: Message) => {
-      this.chatService.messageArray.push({
+      this.chatService.addToMessageArray({
         username: data.username,
         message: ' left',
         type: 'log',
       });
     });
 
-    this.getMessage(
-      'typing',
-      (data: Message) => (this.typingUser = data.username!)
-    );
+    this.getMessage('typing', (data: Message) => {
+      this.typingUser = data.username!;
+      this.scrollDownChatList();
+    });
 
     this.getMessage('stop typing', () => (this.typingUser = null));
   }
 
-  getMessage(messageType: string, fun: (data: Message) => void) {
+  getMessage(messageType: string, fun: (data: Message) => void): void {
     this.chatService.getMessage(messageType).subscribe((data) => fun(data));
   }
 
-  getUsername() {
+  getUsername(): string {
     return this.chatService.getUsername();
   }
 
-  startTyping() {
+  startTyping(): void {
     this.chatService.sendMessage('typing', '');
   }
-  stopTyping() {
+  stopTyping(): void {
     this.chatService.sendMessage('stop typing', '');
   }
 
@@ -85,7 +81,7 @@ export class ChatComponentComponent implements OnInit {
     }, 1000);
   }
 
-  getMessageArray() {
-    return this.chatService.messageArray;
+  getMessageArray(): Message[] {
+    return this.chatService.getMessageArray();
   }
 }
