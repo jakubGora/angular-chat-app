@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  socketUrl: 'https://socketio-chat-h9jt.herokuapp.com/',
+  socketUrl: 'wss://socketio-chat-h9jt.herokuapp.com',
   production: false,
 };
 

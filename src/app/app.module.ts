@@ -14,12 +14,17 @@ import { TopBarComponentComponent } from './components/top-bar-component/top-bar
 import { ChatFormComponentComponent } from './components/chat-form-component/chat-form-component.component';
 
 const config: SocketIoConfig = {
-  url: 'wss://socketio-chat-h9jt.herokuapp.com',
-  options: {},
+  url: environment.socketUrl,
 };
 
 @NgModule({
-  declarations: [AppComponent, StartComponentComponent, ChatComponentComponent, TopBarComponentComponent, ChatFormComponentComponent],
+  declarations: [
+    AppComponent,
+    StartComponentComponent,
+    ChatComponentComponent,
+    TopBarComponentComponent,
+    ChatFormComponentComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
