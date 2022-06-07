@@ -1,0 +1,10 @@
+<form [formGroup]="inputMsgForm" (ngSubmit)="onSubmit()">
+  <input
+    class="inputMessage"
+    placeholder="Type here..."
+    formControlName="inputMessage"
+  />
+  <button>
+    <fa-icon [icon]="faPaperPlane"></fa-icon>
+  </button>
+</form>

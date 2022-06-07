@@ -3,7 +3,7 @@
   <ul class="messages" #chatList>
     <li class="log">Welcome to Socket Chat {{ getUsername() }}</li>
 
-    <ng-container *ngFor="let mess of messageArray">
+    <ng-container *ngFor="let mess of getMessageArray()">
       <ng-container *ngIf="mess.type === 'msg'; else logTmp">
         <ng-container *ngIf="mess.username == getUsername(); else elseTemplate">
           <li class="message right">
@@ -31,14 +31,7 @@
       <span class="messageBody">...</span>
     </li>
   </ul>
-  <form [formGroup]="inputMsgForm" (ngSubmit)="onSubmit()">
-    <input
-      class="inputMessage"
-      placeholder="Type here..."
-      formControlName="inputMessage"
-    />
-    <button>
-      <fa-icon [icon]="faPaperPlane"></fa-icon>
-    </button>
-  </form>
+  <app-chat-form-component
+    [scrollDownChatList]="scrollDownChatList()"
+  ></app-chat-form-component>
 </div>

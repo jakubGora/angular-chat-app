@@ -11,6 +11,7 @@ import { ChatService } from './services/chat.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { TopBarComponentComponent } from './components/top-bar-component/top-bar-component.component';
+import { ChatFormComponentComponent } from './components/chat-form-component/chat-form-component.component';
 
 const config: SocketIoConfig = {
   url: 'wss://socketio-chat-h9jt.herokuapp.com',
@@ -18,7 +19,7 @@ const config: SocketIoConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent, StartComponentComponent, ChatComponentComponent, TopBarComponentComponent],
+  declarations: [AppComponent, StartComponentComponent, ChatComponentComponent, TopBarComponentComponent, ChatFormComponentComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

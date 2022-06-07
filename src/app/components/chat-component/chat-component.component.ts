@@ -1,8 +1,7 @@
 import { Message } from '../../interfaces/Message';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+
 import {
-  faArrowRightFromBracket,
   IconDefinition,
   faPaperPlane,
 } from '@fortawesome/free-solid-svg-icons';
@@ -14,19 +13,11 @@ import { ChatService } from '../../services/chat.service';
   styleUrls: ['./chat-component.component.scss'],
 })
 export class ChatComponentComponent implements OnInit {
-  faPaperPlane: IconDefinition = faPaperPlane;
   typingUser: string | null = null;
-  inputMsgForm = this.formBuilder.group({
-    inputMessage: '',
-  });
-  messageArray: Message[] = [];
 
   @ViewChild('chatList') chatListElement!: ElementRef<HTMLUListElement>;
 
-  constructor(
-    private chatService: ChatService,
-    private formBuilder: FormBuilder
-  ) {
+  constructor(private chatService: ChatService) {
     this.chatService.socket.connect();
     this.chatService.sendMessage('connect', this.getUsername());
     this.chatService.sendMessage('add user', this.getUsername());
@@ -38,7 +29,7 @@ export class ChatComponentComponent implements OnInit {
     );
 
     this.getMessage('new message', (data: Message) => {
-      this.messageArray.push({
+      this.chatService.messageArray.push({
         username: data.username,
         message: data.message,
         type: 'msg',
@@ -47,7 +38,7 @@ export class ChatComponentComponent implements OnInit {
     });
 
     this.getMessage('user joined', (data: Message) => {
-      this.messageArray.push({
+      this.chatService.messageArray.push({
         username: data.username,
         message: ' joined',
         type: 'log',
@@ -55,7 +46,7 @@ export class ChatComponentComponent implements OnInit {
     });
 
     this.getMessage('user left', (data: Message) => {
-      this.messageArray.push({
+      this.chatService.messageArray.push({
         username: data.username,
         message: ' left',
         type: 'log',
@@ -78,22 +69,6 @@ export class ChatComponentComponent implements OnInit {
     return this.chatService.getUsername();
   }
 
-  onSubmit() {
-    if (this.inputMsgForm.value.inputMessage) {
-      this.messageArray.push({
-        username: this.getUsername(),
-        message: this.inputMsgForm.value.inputMessage!,
-        type: 'msg',
-      });
-      this.chatService.sendMessage(
-        'new message',
-        this.inputMsgForm.value.inputMessage!
-      );
-      this.inputMsgForm.reset();
-    }
-    this.scrollDownChatList();
-  }
-
   startTyping() {
     this.chatService.sendMessage('typing', '');
   }
@@ -101,12 +76,16 @@ export class ChatComponentComponent implements OnInit {
     this.chatService.sendMessage('stop typing', '');
   }
 
-  scrollDownChatList() {
+  scrollDownChatList(): void {
     setTimeout(() => {
       this.chatListElement.nativeElement.scroll({
         top: this.chatListElement.nativeElement.scrollHeight,
         behavior: 'smooth',
       });
     }, 1000);
+  }
+
+  getMessageArray() {
+    return this.chatService.messageArray;
   }
 }

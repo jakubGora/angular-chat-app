@@ -1,0 +1,40 @@
+$color1: #0084ff;
+$color2: #0067c7;
+$color3: #1b364e;
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  background-color: $color3;
+  width: 99vw;
+  margin: 0.5vw;
+
+  padding: 0.5rem;
+  color: white;
+  .inputMessage {
+    flex-grow: 1;
+    border: none;
+    font-size: 1.5rem;
+    background-color: $color3;
+  }
+  input {
+    padding: 1rem;
+    outline: none;
+    color: white;
+  }
+  button {
+    cursor: pointer;
+    border: none;
+    width: 3.4rem;
+    height: 3.4rem;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.4rem;
+    background-color: $color1;
+  }
+  button:hover {
+    filter: brightness(120%);
+  }
+}

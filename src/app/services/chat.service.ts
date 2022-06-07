@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class ChatService implements OnInit {
   private username: string = '';
-
+  messageArray: Message[] = [];
   //'wss://socketio-chat-h9jt.herokuapp.com'
   constructor(public socket: Socket, private router: Router) {
     this.initialChat();
