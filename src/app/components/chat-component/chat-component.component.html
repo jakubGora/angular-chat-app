@@ -3,14 +3,14 @@
     <h1>Chat-app</h1>
     <div class="info">
       <p>User: {{ getUsername() }}</p>
-      <p>There are X participants</p>
+      <p>{{ participantsMessage }}</p>
     </div>
     <button (click)="logout()">
       <fa-icon [icon]="faArrowRightFromBracket"></fa-icon>
     </button>
   </div>
 
-  <ul class="messages">
+  <ul class="messages" #chatList>
     <li class="log">Welcome to Socket Chat {{ getUsername() }}</li>
 
     <ng-container *ngFor="let mess of messageArray">

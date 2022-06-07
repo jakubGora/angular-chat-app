@@ -1,0 +1,9 @@
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <h1>Chat-app</h1>
+
+  <div>
+    <h2>What's your nickname?</h2>
+    <input type="text" (blur)="onBlur()" formControlName="name" #nameInput />
+    <input type="submit" />
+  </div>
+</form>

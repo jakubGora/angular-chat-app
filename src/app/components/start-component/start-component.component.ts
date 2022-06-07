@@ -1,4 +1,4 @@
-import { ChatService } from './../services/chat.service';
+import { ChatService } from '../../services/chat.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';

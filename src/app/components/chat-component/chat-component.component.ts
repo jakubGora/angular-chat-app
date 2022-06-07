@@ -1,12 +1,12 @@
-import { Message } from './../interfaces/Message';
-import { Component, OnInit } from '@angular/core';
+import { Message } from '../../interfaces/Message';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import {
   faArrowRightFromBracket,
   IconDefinition,
   faPaperPlane,
 } from '@fortawesome/free-solid-svg-icons';
-import { ChatService } from '../services/chat.service';
+import { ChatService } from '../../services/chat.service';
 
 @Component({
   selector: 'app-chat-component',
@@ -22,27 +22,32 @@ export class ChatComponentComponent implements OnInit {
   });
   messageArray: Message[] = [];
   participantsMessage: string = '';
+  @ViewChild('chatList') chatListElement!: ElementRef<HTMLUListElement>;
+
   constructor(
     private chatService: ChatService,
     private formBuilder: FormBuilder
-  ) {}
+  ) {
+    this.chatService.socket.connect();
+    this.chatService.sendMessage('connect', this.getUsername());
+    this.chatService.sendMessage('add user', this.getUsername());
+  }
 
   ngOnInit() {
-    this.chatService.getMessage('connect').subscribe((data) => {
-      this.chatService.sendMessage('add user', this.getUsername());
+    this.getMessage('connect', () =>
+      this.chatService.sendMessage('add user', this.getUsername())
+    );
 
-      console.log(this.chatService.socket.ioSocket.id);
-    });
-
-    this.chatService.getMessage('new message').subscribe((data: any) => {
+    this.getMessage('new message', (data: Message) => {
       this.messageArray.push({
         username: data.username,
         message: data.message,
         type: 'msg',
       });
+      this.scrollDownChatList();
     });
 
-    this.chatService.getMessage('user joined').subscribe((data: any) => {
+    this.getMessage('user joined', (data: Message) => {
       this.messageArray.push({
         username: data.username,
         message: ' joined',
@@ -51,8 +56,7 @@ export class ChatComponentComponent implements OnInit {
       this.addParticipantsMessage(data);
     });
 
-    this.chatService.getMessage('user left').subscribe((data: any) => {
-      console.log('left');
+    this.getMessage('user left', (data: Message) => {
       this.messageArray.push({
         username: data.username,
         message: ' left',
@@ -61,24 +65,27 @@ export class ChatComponentComponent implements OnInit {
       this.addParticipantsMessage(data);
     });
 
-    this.chatService.getMessage('login').subscribe((data: any) => {
-      this.addParticipantsMessage(data);
-    });
+    this.getMessage('login', (data: Message) =>
+      this.addParticipantsMessage(data)
+    );
 
-    this.chatService.getMessage('typing').subscribe((data: any) => {
-      this.typingUser = data.username;
-    });
+    this.getMessage(
+      'typing',
+      (data: Message) => (this.typingUser = data.username!)
+    );
 
-    this.chatService.getMessage('stop typing').subscribe((data: any) => {
-      this.typingUser = null;
-    });
+    this.getMessage('stop typing', () => (this.typingUser = null));
+  }
+
+  getMessage(messageType: string, fun: (data: Message) => void) {
+    this.chatService.getMessage(messageType).subscribe((data) => fun(data));
   }
 
   getUsername() {
     return this.chatService.getUsername();
   }
 
-  addParticipantsMessage = (data: { numUsers: number }) => {
+  addParticipantsMessage = (data: Message) => {
     let message = '';
     if (data.numUsers === 1) {
       message += "There's 1 participant";
@@ -101,7 +108,7 @@ export class ChatComponentComponent implements OnInit {
       );
       this.inputMsgForm.reset();
     }
-    console.log(this.messageArray);
+    this.scrollDownChatList();
   }
 
   logout() {
@@ -113,5 +120,14 @@ export class ChatComponentComponent implements OnInit {
   }
   stopTyping() {
     this.chatService.sendMessage('stop typing', '');
+  }
+
+  scrollDownChatList() {
+    setTimeout(() => {
+      this.chatListElement.nativeElement.scroll({
+        top: this.chatListElement.nativeElement.scrollHeight,
+        behavior: 'smooth',
+      });
+    }, 1000);
   }
 }

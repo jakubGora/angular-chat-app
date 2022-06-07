@@ -1,5 +1,6 @@
 export interface Message {
-  username: string;
-  message: string;
+  username?: string;
+  message?: string;
   type?: string;
+  numUsers?: number;
 }

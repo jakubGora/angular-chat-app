@@ -1,3 +1,4 @@
+import { Message } from './../interfaces/Message';
 import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Socket } from 'ngx-socket-io';
@@ -28,7 +29,7 @@ export class ChatService implements OnInit {
     this.socket.emit(type, msg);
   }
   getMessage(msg: string) {
-    return this.socket.fromEvent(msg).pipe(map((data) => data));
+    return this.socket.fromEvent(msg).pipe(map((data) => data as Message));
   }
 
   setUsername(username: string): void {
@@ -41,6 +42,7 @@ export class ChatService implements OnInit {
   }
 
   logout(): void {
+    this.socket.disconnect();
     this.setUsername('');
     this.initialChat();
   }
