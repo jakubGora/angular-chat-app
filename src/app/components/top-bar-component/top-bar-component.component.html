@@ -1,0 +1,10 @@
+<div class="topBar">
+  <h1>Chat-app</h1>
+  <div class="info">
+    <p>User: {{ getUsername() }}</p>
+    <p>{{ participantsMessage }}</p>
+  </div>
+  <button (click)="logout()">
+    <fa-icon [icon]="faArrowRightFromBracket"></fa-icon>
+  </button>
+</div>

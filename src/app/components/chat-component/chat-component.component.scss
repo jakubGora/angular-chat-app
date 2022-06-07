@@ -10,38 +10,6 @@ $color3: #1b364e;
   justify-content: center;
   flex-direction: column;
 
-  .topBar {
-    flex-wrap: wrap;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    font-size: 1.5rem;
-    color: white;
-    background-color: $color3;
-    padding: 1rem;
-    .info {
-      flex-grow: 1;
-      padding-left: 1rem;
-      margin-left: 1rem;
-      border-left: 2px solid white;
-    }
-    button {
-      width: 4rem;
-      height: 4rem;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      color: white;
-      font-size: 1.4rem;
-      background-color: rgb(60, 177, 255);
-    }
-    button:hover {
-      filter: brightness(120%);
-    }
-  }
-
   ul.messages {
     display: flex;
     flex-direction: column;

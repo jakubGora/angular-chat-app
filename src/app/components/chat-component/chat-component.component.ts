@@ -14,14 +14,13 @@ import { ChatService } from '../../services/chat.service';
   styleUrls: ['./chat-component.component.scss'],
 })
 export class ChatComponentComponent implements OnInit {
-  faArrowRightFromBracket: IconDefinition = faArrowRightFromBracket;
   faPaperPlane: IconDefinition = faPaperPlane;
   typingUser: string | null = null;
   inputMsgForm = this.formBuilder.group({
     inputMessage: '',
   });
   messageArray: Message[] = [];
-  participantsMessage: string = '';
+
   @ViewChild('chatList') chatListElement!: ElementRef<HTMLUListElement>;
 
   constructor(
@@ -53,7 +52,6 @@ export class ChatComponentComponent implements OnInit {
         message: ' joined',
         type: 'log',
       });
-      this.addParticipantsMessage(data);
     });
 
     this.getMessage('user left', (data: Message) => {
@@ -62,12 +60,7 @@ export class ChatComponentComponent implements OnInit {
         message: ' left',
         type: 'log',
       });
-      this.addParticipantsMessage(data);
     });
-
-    this.getMessage('login', (data: Message) =>
-      this.addParticipantsMessage(data)
-    );
 
     this.getMessage(
       'typing',
@@ -85,16 +78,6 @@ export class ChatComponentComponent implements OnInit {
     return this.chatService.getUsername();
   }
 
-  addParticipantsMessage = (data: Message) => {
-    let message = '';
-    if (data.numUsers === 1) {
-      message += "There's 1 participant";
-    } else {
-      message += 'There are ' + data.numUsers + ' participants';
-    }
-    this.participantsMessage = message;
-  };
-
   onSubmit() {
     if (this.inputMsgForm.value.inputMessage) {
       this.messageArray.push({
@@ -109,10 +92,6 @@ export class ChatComponentComponent implements OnInit {
       this.inputMsgForm.reset();
     }
     this.scrollDownChatList();
-  }
-
-  logout() {
-    this.chatService.logout();
   }
 
   startTyping() {

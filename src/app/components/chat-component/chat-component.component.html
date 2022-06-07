@@ -1,15 +1,5 @@
 <div class="chatArea">
-  <div class="topBar">
-    <h1>Chat-app</h1>
-    <div class="info">
-      <p>User: {{ getUsername() }}</p>
-      <p>{{ participantsMessage }}</p>
-    </div>
-    <button (click)="logout()">
-      <fa-icon [icon]="faArrowRightFromBracket"></fa-icon>
-    </button>
-  </div>
-
+  <app-top-bar-component></app-top-bar-component>
   <ul class="messages" #chatList>
     <li class="log">Welcome to Socket Chat {{ getUsername() }}</li>
 

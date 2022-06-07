@@ -16,54 +16,6 @@
           flex-direction: column;
 }
 
-.chatArea .topBar {
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  font-size: 1.5rem;
-  color: white;
-  background-color: #1b364e;
-  padding: 1rem;
-}
-
-.chatArea .topBar .info {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  padding-left: 1rem;
-  margin-left: 1rem;
-  border-left: 2px solid white;
-}
-
-.chatArea .topBar button {
-  width: 4rem;
-  height: 4rem;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  color: white;
-  font-size: 1.4rem;
-  background-color: #3cb1ff;
-}
-
-.chatArea .topBar button:hover {
-  -webkit-filter: brightness(120%);
-          filter: brightness(120%);
-}
-
 .chatArea ul.messages {
   display: -webkit-box;
   display: -ms-flexbox;
