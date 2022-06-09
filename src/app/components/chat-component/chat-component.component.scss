@@ -116,17 +116,17 @@ $color3: #1b364e;
         background-color: $color1;
       }
       .messageBody.right::after {
-        top: -1.75rem;
+        top: calc(-1.5rem - 4px);
         left: auto;
-        right: -0.2rem;
+        right: -4px;
         background-color: white;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 1.5rem;
       }
       .messageBody.right::before {
-        top: -1.7rem;
+        top: calc(-1.5rem - 4px);
         left: auto;
-        right: -0.2rem;
+        right: -4px;
       }
     }
   }
