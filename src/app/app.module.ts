@@ -5,13 +5,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StartComponentComponent } from './components/start-component/start-component.component';
-import { ChatComponentComponent } from './components/chat-component/chat-component.component';
+import { StartComponent } from './components/start-component/start.component';
+import { ChatComponent } from './components/chat-component/chat.component';
 import { ChatService } from './services/chat.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
-import { TopBarComponentComponent } from './components/top-bar-component/top-bar-component.component';
-import { ChatFormComponentComponent } from './components/chat-form-component/chat-form-component.component';
+import { TopBarComponent } from './components/top-bar-component/top-bar.component';
+import { ChatFormComponent } from './components/chat-form-component/chat-form.component';
 
 const config: SocketIoConfig = {
   url: environment.socketUrl,
@@ -20,10 +20,10 @@ const config: SocketIoConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    StartComponentComponent,
-    ChatComponentComponent,
-    TopBarComponentComponent,
-    ChatFormComponentComponent,
+    StartComponent,
+    ChatComponent,
+    TopBarComponent,
+    ChatFormComponent,
   ],
   imports: [
     BrowserModule,

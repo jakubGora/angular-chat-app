@@ -8,10 +8,10 @@ import {
 import { ChatService } from 'src/app/services/chat.service';
 @Component({
   selector: 'app-chat-form-component',
-  templateUrl: './chat-form-component.component.html',
-  styleUrls: ['./chat-form-component.component.scss'],
+  templateUrl: './chat-form.component.html',
+  styleUrls: ['./chat-form.component.scss'],
 })
-export class ChatFormComponentComponent implements OnInit {
+export class ChatFormComponent implements OnInit {
   inputMsgForm = this.formBuilder.group({
     inputMessage: '' as string,
   });

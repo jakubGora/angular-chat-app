@@ -1,4 +1,4 @@
-import { ChatService } from './../../services/chat.service';
+import { ChatService } from '../../services/chat.service';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { Message } from 'src/app/interfaces/Message';
 import {
@@ -8,10 +8,10 @@ import {
 
 @Component({
   selector: 'app-top-bar-component',
-  templateUrl: './top-bar-component.component.html',
-  styleUrls: ['./top-bar-component.component.scss'],
+  templateUrl: './top-bar.component.html',
+  styleUrls: ['./top-bar.component.scss'],
 })
-export class TopBarComponentComponent implements OnInit {
+export class TopBarComponent implements OnInit {
   participantsMessage: string = '';
   faArrowRightFromBracket: IconDefinition = faArrowRightFromBracket;
   constructor(private chatService: ChatService) {}

@@ -1,14 +1,14 @@
-import { TopBarComponentComponent } from './components/top-bar-component/top-bar-component.component';
+import { TopBarComponent } from './components/top-bar-component/top-bar.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ChatComponentComponent } from './components/chat-component/chat-component.component';
-import { StartComponentComponent } from './components/start-component/start-component.component';
-import { ChatFormComponentComponent } from './components/chat-form-component/chat-form-component.component';
+import { ChatComponent } from './components/chat-component/chat.component';
+import { StartComponent } from './components/start-component/start.component';
+import { ChatFormComponent } from './components/chat-form-component/chat-form.component';
 const routes: Routes = [
-  { path: '', component: StartComponentComponent },
-  { path: 'chat', component: ChatComponentComponent },
-  { path: 'form', component: ChatFormComponentComponent },
-  { path: 'top', component: TopBarComponentComponent },
+  { path: '', component: StartComponent },
+  { path: 'chat', component: ChatComponent },
+  { path: 'form', component: ChatFormComponent },
+  { path: 'top', component: TopBarComponent },
 ];
 
 @NgModule({

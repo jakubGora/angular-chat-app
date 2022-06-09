@@ -4,11 +4,11 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-start-component',
-  templateUrl: './start-component.component.html',
-  styleUrls: ['./start-component.component.scss'],
+  selector: 'app-start',
+  templateUrl: './start.component.html',
+  styleUrls: ['./start.component.scss'],
 })
-export class StartComponentComponent implements OnInit {
+export class StartComponent implements OnInit {
   constructor(
     private chatService: ChatService,
     private router: Router,

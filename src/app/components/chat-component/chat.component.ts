@@ -9,10 +9,10 @@ import { ChatService } from '../../services/chat.service';
 
 @Component({
   selector: 'app-chat-component',
-  templateUrl: './chat-component.component.html',
-  styleUrls: ['./chat-component.component.scss'],
+  templateUrl: './chat.component.html',
+  styleUrls: ['./chat.component.scss'],
 })
-export class ChatComponentComponent implements OnInit {
+export class ChatComponent implements OnInit {
   typingUser: string | null = null;
 
   constructor(private chatService: ChatService) {
