@@ -10,8 +10,8 @@ import { ChatComponent } from './components/chat-component/chat.component';
 import { ChatService } from './services/chat.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
-import { TopBarComponent } from './components/top-bar-component/top-bar.component';
-import { ChatFormComponent } from './components/chat-form-component/chat-form.component';
+import { ChatTopBarComponent } from './components/chat-component/chat-top-bar-component/chat-top-bar.component';
+import { ChatFormComponent } from './components/chat-component/chat-form-component/chat-form.component';
 
 const config: SocketIoConfig = {
   url: environment.socketUrl,
@@ -22,7 +22,7 @@ const config: SocketIoConfig = {
     AppComponent,
     StartComponent,
     ChatComponent,
-    TopBarComponent,
+    ChatTopBarComponent,
     ChatFormComponent,
   ],
   imports: [

@@ -1,4 +1,4 @@
-import { ChatService } from '../../services/chat.service';
+import { ChatService } from '../../../services/chat.service';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { Message } from 'src/app/interfaces/Message';
 import {
@@ -7,11 +7,11 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-top-bar-component',
-  templateUrl: './top-bar.component.html',
-  styleUrls: ['./top-bar.component.scss'],
+  selector: 'app-chat-top-bar-component',
+  templateUrl: './chat-top-bar.component.html',
+  styleUrls: ['./chat-top-bar.component.scss'],
 })
-export class TopBarComponent implements OnInit {
+export class ChatTopBarComponent implements OnInit {
   participantsMessage: string = '';
   faArrowRightFromBracket: IconDefinition = faArrowRightFromBracket;
   constructor(private chatService: ChatService) {}
