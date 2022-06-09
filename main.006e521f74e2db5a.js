@@ -17510,7 +17510,7 @@
                 [1, "logo"],
                 [
                   "src",
-                  "../../../angular-chat-app/assets/logo.png",
+                  "./assets/logo.png",
                   "alt",
                   "logo",
                 ],
