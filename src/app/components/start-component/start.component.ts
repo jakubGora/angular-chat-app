@@ -9,14 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./start.component.scss'],
 })
 export class StartComponent implements OnInit {
+  @ViewChild('nameInput')
+  public nameInputElement: ElementRef<HTMLInputElement> | undefined;
+
   constructor(
     private chatService: ChatService,
     private router: Router,
     private formBuilder: FormBuilder
   ) {}
-
-  @ViewChild('nameInput')
-  nameInputElement: ElementRef<HTMLInputElement> | undefined;
 
   ngOnInit(): void {}
 

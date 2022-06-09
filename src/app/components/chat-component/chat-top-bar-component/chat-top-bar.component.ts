@@ -12,8 +12,9 @@ import {
   styleUrls: ['./chat-top-bar.component.scss'],
 })
 export class ChatTopBarComponent implements OnInit {
-  participantsMessage: string = '';
-  faArrowRightFromBracket: IconDefinition = faArrowRightFromBracket;
+  public participantsMessage: string = '';
+  public faArrowRightFromBracket: IconDefinition = faArrowRightFromBracket;
+
   constructor(private chatService: ChatService) {}
 
   ngOnInit(): void {

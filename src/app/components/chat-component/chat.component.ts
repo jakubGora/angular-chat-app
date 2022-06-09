@@ -13,7 +13,7 @@ import { ChatService } from '../../services/chat.service';
   styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit {
-  typingUser: string | null = null;
+  public typingUser: string | null = null;
 
   constructor(private chatService: ChatService) {
     this.chatService.socket.connect();

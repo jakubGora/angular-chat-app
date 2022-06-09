@@ -12,13 +12,13 @@ import { ChatService } from 'src/app/services/chat.service';
   styleUrls: ['./chat-form.component.scss'],
 })
 export class ChatFormComponent implements OnInit {
-  inputMsgForm = this.formBuilder.group({
+  public inputMsgForm = this.formBuilder.group({
     inputMessage: '' as string,
   });
-  faPaperPlane: IconDefinition = faPaperPlane;
-  faFaceSmile: IconDefinition = faFaceSmile;
+  public faPaperPlane: IconDefinition = faPaperPlane;
+  public faFaceSmile: IconDefinition = faFaceSmile;
+  public emojisActive: boolean = false;
 
-  emojisActive: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private chatService: ChatService
