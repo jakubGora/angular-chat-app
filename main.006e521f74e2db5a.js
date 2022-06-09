@@ -17508,7 +17508,12 @@
               consts: [
                 [1, "topBar"],
                 [1, "logo"],
-                ["src", "../../../chat/assets/logo.png", "alt", "logo"],
+                [
+                  "src",
+                  "../../../angular-chat-app/chat/assets/logo.png",
+                  "alt",
+                  "logo",
+                ],
                 [1, "info"],
                 [3, "click"],
                 [3, "icon"],
