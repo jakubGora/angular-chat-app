@@ -15,8 +15,6 @@ import { ChatService } from '../../services/chat.service';
 export class ChatComponentComponent implements OnInit {
   typingUser: string | null = null;
 
-  @ViewChild('chatList') chatListElement!: ElementRef<HTMLUListElement>;
-
   constructor(private chatService: ChatService) {
     this.chatService.socket.connect();
     this.chatService.sendMessage('connect', this.getUsername());
@@ -73,12 +71,15 @@ export class ChatComponentComponent implements OnInit {
   }
 
   scrollDownChatList(): void {
+    let chatListElement: HTMLUListElement = document.getElementsByClassName(
+      'messages'
+    )[0] as HTMLUListElement;
     setTimeout(() => {
-      this.chatListElement.nativeElement.scroll({
-        top: this.chatListElement.nativeElement.scrollHeight,
+      chatListElement.scroll({
+        top: chatListElement.scrollHeight,
         behavior: 'smooth',
       });
-    }, 1000);
+    }, 100);
   }
 
   getMessageArray(): Message[] {

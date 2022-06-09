@@ -12,6 +12,17 @@ $color3: #1b364e;
   color: white;
   background-color: $color3;
   padding: 1rem;
+  .logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 4.5rem;
+    margin-left: 1rem;
+    img {
+      height: 4.5rem;
+    }
+  }
   .info {
     flex-grow: 1;
     padding-left: 1rem;
@@ -32,7 +43,7 @@ $color3: #1b364e;
     filter: brightness(120%);
   }
 }
-@media screen and (max-width: 610px) {
+@media screen and (max-width: 700px) {
   .topBar {
     font-size: 1.1rem;
 
@@ -41,10 +52,14 @@ $color3: #1b364e;
     }
   }
 }
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 520px) {
   .topBar {
-    h1 {
+    .logo {
+      justify-content: flex-start;
       flex-grow: 1;
+      img {
+        height: 3rem;
+      }
     }
     .info {
       display: none;

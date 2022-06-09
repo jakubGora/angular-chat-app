@@ -3,8 +3,19 @@
     class="inputMessage"
     placeholder="Type here..."
     formControlName="inputMessage"
+    (click)="emojisActive = false"
   />
+
+  <div class="btn" (click)="emojisActive = !emojisActive">
+    <fa-icon [icon]="faFaceSmile"></fa-icon>
+  </div>
   <button>
     <fa-icon [icon]="faPaperPlane"></fa-icon>
   </button>
+  <div *ngIf="emojisActive" class="emojis">
+    <div (click)="addEmoji($event)" class="emoji">😀</div>
+    <div (click)="addEmoji($event)" class="emoji">😁</div>
+    <div (click)="addEmoji($event)" class="emoji">😘</div>
+    <div (click)="addEmoji($event)" class="emoji">🤣</div>
+  </div>
 </form>

@@ -59,6 +59,7 @@ $color3: #1b364e;
       font-size: 1.5rem;
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
       color: white;
       width: 50%;
       min-width: 360px;
@@ -75,20 +76,24 @@ $color3: #1b364e;
       .messageBody {
         width: fit-content;
         position: relative;
-        background-color: $color1;
+        word-wrap: break-word;
+        color: #0067c7;
+        background-color: white;
+        border: 4px solid $color1;
         padding: 1rem;
         margin-top: 1.5rem;
         border-bottom-left-radius: 1rem;
         border-bottom-right-radius: 1rem;
         border-top-right-radius: 1rem;
+        animation: getMessageAnim 1s normal;
       }
       .messageBody::before {
         content: "";
         width: 1.5rem;
         height: 1.5rem;
         position: absolute;
-        top: -1.5rem;
-        left: 0;
+        top: calc(-1.5rem - 4px);
+        left: -4px;
         background-color: $color1;
       }
       .messageBody::after {
@@ -96,17 +101,19 @@ $color3: #1b364e;
         width: 50vw;
         height: 1.5rem;
         position: absolute;
-        top: -1.5rem;
-        left: 0;
+        top: calc(-1.5rem - 4px);
+        left: -4px;
         background-color: white;
         border-bottom-left-radius: 1.5rem;
       }
       .messageBody.right {
         border-top-right-radius: 0;
         border-top-left-radius: 1rem;
-        color: #0067c7;
+        color: white;
         background-color: white;
         border: 4px solid $color1;
+
+        background-color: $color1;
       }
       .messageBody.right::after {
         top: -1.75rem;
@@ -121,6 +128,20 @@ $color3: #1b364e;
         left: auto;
         right: -0.2rem;
       }
+    }
+  }
+
+  @keyframes getMessageAnim {
+    0% {
+      width: 1rem;
+      height: 1rem;
+      font-size: 0px;
+      color: #00000000;
+    }
+    20% {
+      font-size: 0px;
+    }
+    100% {
     }
   }
 }
