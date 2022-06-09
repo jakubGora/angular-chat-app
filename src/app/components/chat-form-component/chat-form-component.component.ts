@@ -27,6 +27,7 @@ export class ChatFormComponentComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(): void {
+    this.emojisActive = false;
     if (this.inputMsgForm.value.inputMessage) {
       this.chatService.addToMessageArray({
         username: this.chatService.getUsername(),
@@ -51,7 +52,7 @@ export class ChatFormComponentComponent implements OnInit {
         top: chatListElement.scrollHeight,
         behavior: 'smooth',
       });
-    }, 1000);
+    }, 500);
   }
 
   addEmoji(event: MouseEvent): void {

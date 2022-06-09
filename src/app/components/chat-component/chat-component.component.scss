@@ -85,7 +85,7 @@ $color3: #1b364e;
         border-bottom-left-radius: 1rem;
         border-bottom-right-radius: 1rem;
         border-top-right-radius: 1rem;
-        animation: getMessageAnim 1s normal;
+        animation: getMessageAnim 0.6s ease-out;
       }
       .messageBody::before {
         content: "";

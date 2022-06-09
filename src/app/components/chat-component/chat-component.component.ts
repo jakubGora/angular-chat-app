@@ -79,7 +79,7 @@ export class ChatComponentComponent implements OnInit {
         top: chatListElement.scrollHeight,
         behavior: 'smooth',
       });
-    }, 100);
+    }, 500);
   }
 
   getMessageArray(): Message[] {

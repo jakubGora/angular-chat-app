@@ -50,6 +50,7 @@ export class ChatService implements OnInit {
   }
 
   logout(): void {
+    this.messageArray = [];
     this.socket.disconnect();
     this.setUsername('');
     this.initialChat();
